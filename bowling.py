@@ -9,7 +9,8 @@ def score(game):
         if game[i] == '/':
             result += 10 - last
         else:
-            result += get_value(game[i])   
+            result += get_value(game[i])
+
         if frame < 10 and get_value(game[i]) == 10:
             if game[i] == '/':
                 result += get_value(game[i + 1])
@@ -18,8 +19,9 @@ def score(game):
                 if game[i + 2] == '/':
                     result += 10 - get_value(game[i + 1])
                 else:
-                    result += get_value(game[i + 2])    
-        last = get_value(game[i])   
+                    result += get_value(game[i + 2])
+
+        last = get_value(game[i])
         if not in_first_half or game[i].lower() == 'x':
             in_first_half = True
             frame += 1
@@ -31,7 +33,7 @@ def score(game):
 def get_value(char):
     if char in string.digits:
         return int(char)
-    elif char == 'X' or char == 'x':
+    elif char.lower() == 'x':
         return 10
     elif char == '/':
         return 10
